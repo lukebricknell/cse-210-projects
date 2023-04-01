@@ -4,9 +4,6 @@ public abstract class Ads : AdsMain
   public abstract string Success() ;
   public abstract string DisplayInfo();
   public abstract string ConvertToSave();
-  public void AddPoints(){
-    
-  }
 
   public string GetName()
   {

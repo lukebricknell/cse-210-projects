@@ -1,20 +1,17 @@
 public class Link : Ads
 {
   private int _linkClicks;
-  public int GetLinks()
+  
+  public Link(string name, string adType, int reach, int impressions, int costPerResult, string startingDate, int linksClicked)
   {
-    return _linkClicks;
-  }
-
-  public Link(string name, string adType, int reach, int impressions, int costPerResult, string startingDate, int linkClicks) {
-    _name = name;
+    _name = name; 
     _adType = adType;
     _reach = reach;
-    _impressions = impressions;
+    _impressions = impressions; 
     _costPerResult = costPerResult;
     _startingDate = startingDate;
+    _linkClicks = linksClicked;
     _status = Success();
-    _linkClicks = linkClicks;
   }
   public Link(string name, string adType, int reach, int impressions, int costPerResult, string startingDate, string status, int linkClicks) {
     _name = name;
@@ -25,6 +22,11 @@ public class Link : Ads
     _startingDate = startingDate;
     _status = status;
     _linkClicks = linkClicks;
+  }
+
+  public int GetLinks()
+  {
+    return _linkClicks;
   }
 
   public override string DisplayInfo() 
@@ -39,11 +41,11 @@ public class Link : Ads
 
   public override string Success()
   {
-    if((GetImpressions() - GetReach()) / GetLinks() <= 10)
+    if(((GetImpressions() - GetReach()) / GetLinks()) <= 10)
     {
       return "Success";
     }
-    else if (10 < ((GetImpressions() - GetReach()) / GetLinks()) && (GetImpressions() - GetReach()) / GetLinks() >= 15)
+    else if (10 < ((GetImpressions() - GetReach()) / GetLinks()) && ((GetImpressions() - GetReach()) / GetLinks()) >= 15)
     {
       return "Average";
     }

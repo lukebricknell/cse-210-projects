@@ -8,8 +8,8 @@ public class Engagement : Ads
     _impressions = impressions;
     _costPerResult = costPerResult;
     _startingDate = startingDate;
-    _status = Success();
     _engagement = engagement;
+    _status = Success();
   }
   public Engagement(string name, string adType, int reach, int impressions, int costPerResult, string startingDate, string status, string engagement) {
     _name = name;
@@ -21,10 +21,7 @@ public class Engagement : Ads
     _status = status;
     _engagement = engagement;
   }
-  public string GetEngagement()
-  {
-    return _engagement;
-  }
+  public string GetEngagement() => _engagement;
   public override string DisplayInfo() 
   {
     return $"Name: {GetName()} \n" + $"Ad Type: {GetAdType()}\n" + $"Reach: {GetReach()} \n" + $"Impressions: {GetImpressions()} \n" + $"Cost / Result: {GetResultCost()} \n" + $"Starting Date: {GetStartingDate()} \n" + $"Ad Status: {Success()} \n" + $"Engagement Ranking: {GetEngagement()}";
@@ -35,20 +32,21 @@ public class Engagement : Ads
   }
   public override string Success()
   {
-    if(_engagement.ToLower() == "above average")
+    if(GetEngagement().ToLower() == "above average")
     {
       return "Success";
     }
-    else if (_engagement.ToLower() == "above average")
+    else if (GetEngagement().ToLower() == "average")
     {
       return "Average";
     }
-    else
+    else if (GetEngagement().ToLower() == "bad")
     {
       return "Bad";
     }
+    else 
+    {
+      return "Not an option, please retry.";
+    }
   }
-
-
-
 }
